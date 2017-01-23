@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <title>Photo Album</title>
+  </head>
+  <body>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
+    <script src="bower_components/backbonejs/backbone-min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="models/AppModel.js"></script>
+    <script src="models/PhotoModel.js"></script>
+    <script src="views/AppView.js"></script>
+    <script src="views/AlbumView.js"></script>
+    <script src="views/PhotoView.js"></script>
+    <!-- <script src="collections/Photo-Album-Collection.js"></script> -->
+
+    <h1 class="display-3">Photo Album</h1>
+
+    <script>
+      $(function() {
+
+         var photoData = [
+        {
+          title: 'Mock0',
+          imageURL: 'data/photos/MockUp0.png',
+          rating: 5
+        },
+        {
+          title: 'Mock1',
+          imageURL: 'data/photos/MockUp1.png',
+          rating: 4
+        }
+      ];
+        var photoAlbum = new Backbone.Collection(photoData, {model: PhotoModel});
+        
+        var app = new AppModel({album: photoAlbum});
+        
+        // var albumView = new AlbumView({collection: photoAlbum});
+
+        // var photoView = new PhotoView({collection: photoAlbum});
+
+
+        var appView = new AppView({model: app});
+
+
+        $('body').append(appView.render());
+        
+      });
+    </script>
+
+  </body>
+</html>
